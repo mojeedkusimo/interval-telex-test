@@ -6,49 +6,34 @@ import {telexIntegrationConfig} from './telex-integration-config';
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
 const port = 3000;
 
-// app.get('/', async (req, res) => {
-//   // console.log(req.body);
+app.get('/', async (req, res) => {
 
-//   const call = await axios.get("https://google.com");
-//   console.log(call.status);
+  const call = await axios.get("https://google.com");
+  console.log(call.status);
   
-//   res.json({
-//     status: "success",
-//     message: `You typed in ${req.body.message}, right?`,
-//     username: "Uptime Monitor",
-//     event_name: "Uptime Check"
-//   })
-//   // res.send('Updated package.json again x 3!');
-// });
+  res.json({
+    status: "success",
+    message: `Google site is going fine!!`,
+    username: "Uptime Monitor",
+    event_name: "Uptime Check"
+  })
+});
 
-app.get('/webhook', async (req, res) => {
+app.post('/webhook', async (req, res) => {
 
-  // const sitreq
   try {
-    const call = await axios.get("https://google.com");
-    console.log(call.status);
-  
-    if (call.status === 200) {
+    console.log(req);
   
      res.json({
         status: "success",
         message: `Website is up and running`,
-        username: "Slack github test",
+        username: "Github webhook test",
         event_name: "Uptime Check"
       })
-    }
-  
-    else {
-     res.json({
-      status: "error",
-      message: `Something is wrong with website`,
-      username: "Uptime Monitor",
-      event_name: "Uptime Check"
-    })
-  }
+
   } catch (e) {
     res.json({
       status: "error",
@@ -58,12 +43,10 @@ app.get('/webhook', async (req, res) => {
     })
   }
 
-  // res.send('Updated package.json again x 3!');
 });
 
 app.get('/telex-integration-specification', (req, res) => {
 
-  console.log(req);
   res.json(telexIntegrationConfig);
 })
 
