@@ -36,7 +36,7 @@ app.get('/webhook', async (req, res) => {
      res.json({
         status: "success",
         message: `Website is up and running`,
-        username: "Uptime Monitor",
+        username: "Slack github test",
         event_name: "Uptime Check"
       })
     }
