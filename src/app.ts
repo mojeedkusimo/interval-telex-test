@@ -25,7 +25,7 @@ app.get('/', async (req, res) => {
 app.post('/webhook', async (req, res) => {
 
   try {
-    console.log(req);
+    console.log(req.body.repository);
   
      res.json({
         status: "success",
