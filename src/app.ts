@@ -29,10 +29,10 @@ app.post('/webhook', async (req, res) => {
     console.log(req.body);
     const url = "https://ping.telex.im/v1/webhooks/01952b31-501e-7104-8f54-edbca5141040";
     const data = {
-      "event_name": "github-push",
+      "event_name": "github-push-demo",
       "message": "there was a push event on your repo",
       "status": "success",
-      "username": "mojeedkusimo"
+      "username": "github notification app"
     };
 
     fetch(url, {
